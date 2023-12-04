@@ -1,0 +1,156 @@
+.bnav {
+  position: relative;
+  bottom: 0;
+  width: 98.6%;
+  background-color: #F6F4F1;
+  height: 7vh;
+  border-top: 0.5px solid #b3b3b3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  font-family: HelveticaNeue, sans-serif;
+
+}
+
+.bnav ul {
+  display: flex;
+  list-style: none;
+}
+
+.bnav ul li {
+  white-space: nowrap;
+  padding: 5%;
+  font-size: 12.25px;
+  margin-right: 20%;
+}
+
+.bnav ul li a {
+  color: gray;
+ cursor: pointer;
+ text-decoration: underline;
+ 
+}
+.contact-us ul li{
+  color: gray;
+  cursor: pointer;
+}
+.lbnav {
+  margin-left: 1%;
+  margin-top: 0.85%;
+}
+
+.newsletter_textbox {
+  display: flex;
+  align-items: center;
+}
+
+.textbox {
+  display: flex;
+  align-items: center;
+}
+#emailInput:focus {
+  background-color: transparent; /* Set the background color to transparent when focused */
+  outline: none; /* Remove the default outline */
+}
+#emailInput {
+  flex-grow: 1; /* Allow the email input to grow and take up available space */
+  width: calc(100% - 30px);
+  padding: 1px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-size: 12.25px;
+  background-color: #F6F4F1;
+}
+.contact-us{
+  margin-right: 510px;
+  margin-top: 1%;
+  font-family: HelveticaNeue, sans-serif;
+  text-decoration: underline;
+}
+
+.ntext {
+ 
+  font-size: 12.25px;
+  margin-top: 2%;
+  margin-right: 20px;
+}
+
+.box input {
+  display: flex;
+  flex-direction: row; /* Set flex direction to row */
+  border-bottom: 1px solid black !important;
+  margin-right: 50px;
+  margin-top: 5%;
+}
+.box button {
+  background-image: url("https://static.thenounproject.com/png/634840-200.png");
+  position: absolute;
+  
+ 
+
+  border: none;
+  height: 1.75vh;
+  width: 1%;
+  cursor: pointer;
+  background-color: transparent;
+  transform: translateX(2px);
+
+  background-size: cover;
+  background-position: center;
+  margin-left: 12%;
+  margin-top: -1.25%;
+ 
+
+}
+.error-box{
+
+  margin-left: 86%;
+  margin-bottom:1%;
+
+ 
+}
+.error-message{
+  font-size: 14px;
+  font-weight: 200;
+  display: inline-block;
+  background-color:black ; /* Red background color */
+  color: white; /* White text color */
+  padding: 5px 5px;
+  border-radius: 10px;  
+  height: 3vh;
+  width: 70%;
+  
+}
+.ant-modal-header{
+  margin-left: 40px;
+  padding: 1%;
+  
+}
+.ant-modal-title{
+  font-size: 25px !important;
+  font-weight: 600;
+}
+.ant-modal{
+max-height: 5vh !important;
+}
+.terms{
+  margin-top: 3%;
+  margin-left: 4%;
+  font-family: HelveticaNeue, sans-serif;
+}
+.heading-term{
+  font-size: 17px;
+  font-weight: 600;
+ 
+}
+.text-term{
+  margin-left: 5%;
+  font-size: 15px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+.ant-modal-content{
+  max-height:500px;
+}

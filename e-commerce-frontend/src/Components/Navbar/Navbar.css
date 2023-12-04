@@ -1,0 +1,218 @@
+.nav {
+  display: flex;
+  height: 9vh;
+  width: 100%;
+  border-bottom: 0.5px solid #b3b3b3;
+  align-items: center;
+}
+
+.top-bar {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 10px;
+  padding: 5px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  letter-spacing: 1px;
+}
+.bus-sign {
+  display: inline-block;
+  animation: scrollText 20s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(calc(-100% - 200px));
+  }
+}
+
+.outer-border{
+  height: 15vh;
+  width: 100%;
+
+}
+
+
+
+.nav-cart-count{
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -21px;
+  margin-left: 60%;
+  border-radius: 11px;
+  font-size: 14px;
+  background: black;
+  color: white;
+}
+.logo {
+  position: absolute;
+  top: 0;
+  
+  border: none;
+  height:10vh;
+  width: 15%;
+  cursor: pointer;
+  background-color: transparent;
+  transform: translateX(2px);
+  background-image: url("/Users/rohail/Downloads/nebula_full_logo.png");
+  background-size: cover;
+  margin-left: 30%;
+  background-position: center;
+margin-top: 1.2%;
+
+}
+
+
+
+
+.lnav,
+.rnav {
+  padding-top: 3%;
+  display: flex;
+  font-size: 1.5vw;
+  font-weight: bold;
+  margin-left: -3%;
+}
+
+
+
+.lnav li{
+  color: black;
+  padding-left: 8%;
+  position: relative;
+  margin-right: -4%;
+  margin-left: -2%;
+  
+}
+
+.lnav li a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: -3px;
+
+}
+.rnav li a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+ margin-right: 20px;
+}
+
+
+.lnav ul li:hover::after {
+  width: 100%;
+
+}
+.rnav {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: black;
+  margin-left: auto;
+  padding-right: 8%;
+}
+
+.rnav ul,
+.lnav ul {
+  list-style: none;
+  display: flex;
+}
+
+.rnav ul li,
+.lnav ul li {
+  color: black;
+  position: relative;
+  white-space: nowrap;
+  margin-left: 30%;
+}
+
+.rnav ul li a,
+.lnav ul li a  {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
+.rnav ul li::after,
+.lnav ul li::after {
+  content: '';
+  width: 0%;
+  height: 1px;
+  background: black;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.rnav ul li:hover::after {
+  width: 100%;
+}
+
+.top-bar {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 10px;
+  padding: 5px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.bus-sign {
+  display: inline-block;
+  animation: scrollText 20s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+      transform: translateX(100%);
+  }
+
+  100% {
+      transform: translateX(calc(-100% - 200px));
+  }
+}
+
+
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s linear 0.2s;
+  pointer-events: none;
+  margin-top: 0.9%;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  margin-top: 1%;
+  pointer-events: auto;
+}
