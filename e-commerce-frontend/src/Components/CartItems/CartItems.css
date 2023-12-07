@@ -7,18 +7,19 @@
   border: 0;
 }
 .cartitems-format-main {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   align-items: center;
-  gap: 75px;
+  gap: 20px;
   padding: 20px 0px;
   color: #454545;
   font-size: 18px;
   font-weight: 600;
+  white-space:nowrap;
 }
 .cartitems-format {
   display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
   align-items: center;
   gap: 75px;
   padding: 20px 0px;
@@ -58,18 +59,20 @@
   padding: 15px 0px;
 }
 .cartitems-total button{
-  width: 262px;
+  width: 150px;
   height: 58px;
-  outline: none;
-  border: none;
-  background: black;
-  color: #fff;
+  outline: 0.5px solid black !important; 
+  margin-left: 40%;
+  background: white !important;
+  color: black !important;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
 }
-.cartitems-total button:active{
-  background: gray;
+.cartitems-total button:hover{
+  background-color: black !important;
+  color: white !important;
+  transition: 0.5s;
 }
 .cartitems-promocode {
   flex: 1;
@@ -98,7 +101,8 @@
   width: 170px;
   height: 58px;
   font-size: 16px;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   cursor: pointer;
+  outline: 0.5px solid black;
 }

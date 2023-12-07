@@ -60,6 +60,9 @@ const Users = mongoose.model("Users", {
   cartData: {
     type: Object,
   },
+  wData: {
+    type: Object,
+  },
   date: {
     type: Date,
     default: Date.now,
@@ -108,6 +111,112 @@ const Product = mongoose.model("Product", {
   },
 });
 
+// Schema for creating ContactForm model
+const ContactForm = mongoose.model("ContactForm", {
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  service: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+const orderSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  address: String,
+  city: String,
+  postalCode: String,
+  country: String,
+  paymentMethod: String,
+  voucher: String,
+  // Add more fields as needed
+});
+
+const creditCardSchema = new mongoose.Schema({
+  cardNumber: {
+    type: String,
+    required: true,
+  },
+  cardHolder: {
+    type: String,
+    required: true,
+  },
+  expirationDate: {
+    type: String,
+    required: true,
+  },
+  cvv: {
+    type: String,
+    required: true,
+  },
+});
+
+const CreditCard = mongoose.model('CreditCard', creditCardSchema);
+
+module.exports = CreditCard;
+app.post('/ccinfo', async (req, res) => {
+  try {
+    const creditCard = new CreditCard(req.body);
+    const savedCard = await creditCard.save();
+    res.status(201).json(savedCard);
+  } catch (error) {
+    console.error('Error storing credit card info:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
+
+app.post('/orders', async (req, res) => {
+  try {
+    const orderData = req.body;
+    const order = new Order(orderData);
+    await order.save();
+    res.status(201).json({ success: true, message: 'Order placed successfully!' });
+  } catch (error) {
+    console.error('Error placing order:', error);
+    res.status(500).json({ success: false, message: 'Failed to place order' });
+  }
+});
+
+app.post('/submitcontactform', async (req, res) => {
+  console.log("Submit Contact Form");
+  const { name, email, service, message } = req.body;
+
+  // Perform form validation here if needed
+
+  const contactFormSubmission = new ContactForm({
+    name,
+    email,
+    service,
+    message,
+  });
+
+  try {
+    await contactFormSubmission.save();
+    res.json({ success: true, message: "Contact form submitted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Failed to submit contact form" });
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("Root");
 });
@@ -139,7 +248,7 @@ app.post('/login', async (req, res) => {
     }
 })
 
-//Create an endpoint at ip/auth for regestring the user in data base & sending token
+//Create an endpoint at ip/auth for registering the user in data base & sending token
 app.post('/signup', async (req, res) => {
   console.log("Sign Up");
         let success = false;
@@ -151,11 +260,16 @@ app.post('/signup', async (req, res) => {
           for (let i = 0; i < 300; i++) {
           cart[i] = 0;
         }
+        let wcart = {};
+          for (let i = 0; i < 300; i++) {
+          wcart[i] = 0;
+        }
         const user = new Users({
             name: req.body.username,
             email: req.body.email,
             password: req.body.password,
             cartData: cart,
+            wData: wcart,
         });
         await user.save();
         const data = {
@@ -200,7 +314,7 @@ app.post('/addtocart', fetchuser, async (req, res) => {
   app.post('/addtowishlist', fetchuser, async (req, res) => {
     console.log("Add Wishlist");
       let userData = await Users.findOne({_id:req.user.id});
-      userData.cartData[req.body.itemId] += 1;
+      userData.wData[req.body.itemId] += 1;
       await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
       res.send("Added")
     })
@@ -220,11 +334,11 @@ app.post('/removefromcart', fetchuser, async (req, res) => {
   app.post('/removefromwishlist', fetchuser, async (req, res) => {
     console.log("Remove Wishlist");
       let userData = await Users.findOne({_id:req.user.id});
-      if(userData.cartData[req.body.itemId]!=0)
+      if(userData.wData[req.body.itemId]!=0)
       {
-        userData.cartData[req.body.itemId] -= 1;
+        userData.wData[req.body.itemId] -= 1;
       }
-      await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
+      await Users.findOneAndUpdate({_id:req.user.id}, {cartData:userData.wData});
       res.send("Removed");
     })
 

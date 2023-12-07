@@ -39,7 +39,6 @@ const Navbar = () => {
         <li onClick={()=>{setMenu("new")}}><Link to='/new' style={{ textDecoration: 'none' }}>NEW</Link>{menu==="new"?<hr/>:<></>}</li>
         <li onClick={()=>{setMenu("shirts")}}><Link to='/shirts' style={{ textDecoration: 'none' }}>SHIRTS</Link>{menu==="shirts"?<hr/>:<></>}</li>
         <li onClick={()=>{setMenu("sweatpants")}}><Link to='/sweatpants' style={{ textDecoration: 'none' }}>SWEATPANTS</Link>{menu==="sweatpants"?<hr/>:<></>}</li>
-        <li onClick={()=>{setMenu("Wishlist")}}><Link to='/Wishlist' style={{ textDecoration: 'none' }}>Wishlist</Link>{menu==="Wishlist"?<hr/>:<></>}</li>
            
         
       </ul>

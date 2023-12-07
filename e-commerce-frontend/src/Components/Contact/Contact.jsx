@@ -9,7 +9,7 @@ const Contact = () => {
     service: "General Inquiry",
     message: "",
   };
-  let [menu, setMenu] = useState('shop');
+
   // Define state variables to store form input values and submission status
   const [formData, setFormData] = useState(initialFormData);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -24,7 +24,7 @@ const Contact = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform form validation here (e.g., validate email format)
@@ -34,17 +34,27 @@ const Contact = () => {
       return;
     }
 
-    // You can submit the form data to your backend or perform any desired action here
-    // For now, let's just set the formSubmitted state to true
-    setFormSubmitted(true);
+    try {
+      const response = await fetch("http://localhost:4000/submitcontactform", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Clear form inputs after submission
-    setFormData(initialFormData);
-
-    // Hide submission message after 10 seconds
-    setTimeout(() => {
-      setFormSubmitted(false);
-    }, 10000);
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData(initialFormData);
+        setTimeout(() => {
+          setFormSubmitted(false);
+        }, 10000);
+      } else {
+        console.error("Failed to submit the form.");
+      }
+    } catch (error) {
+      console.error("Error occurred during form submission:", error);
+    }
   };
 
   return (
@@ -63,7 +73,7 @@ const Contact = () => {
               </div>
 
               <form onSubmit={handleSubmit}>
-              <div className="row">
+                <div className="row">
                   <div className="inquiry">
                     <div className="name-field">
                       <label />
@@ -84,10 +94,7 @@ const Contact = () => {
                     <div className="query">
                       <span>Queries</span>
                       <br />
-
-                      <a  target="blank">
-                        Shopat@Nebula.com
-                      </a>
+                      <a target="blank">Shopat@Nebula.com</a>
                     </div>
                   </div>
                 </div>
@@ -110,12 +117,11 @@ const Contact = () => {
                       />
                     </div>
                     <div className="query">
-                   
-                    <span>Returns</span>
-
-                       
-                        <li onClick={()=>{setMenu("returnspage")}}><Link to='/Returnspage' style={{ textDecoration: 'none' }}><a>RETURNS.NEBULA.COM</a></Link>{menu==="returnpage"?<hr/>:<></>}
-                    
+                      <span>Returns</span>
+                      <li onClick={() => { /* Your return page logic */ }}>
+                        <Link to='/Returnspage' style={{ textDecoration: 'none' }}>
+                          <a>RETURNS.NEBULA.COM</a>
+                        </Link>
                       </li>
                     </div>
                   </div>

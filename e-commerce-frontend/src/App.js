@@ -12,6 +12,9 @@ import LoginSignup from "./Pages/LoginSignup";
 import Returns from "./Components/Returns/Returns";
 import Contact from "./Components/Contact/Contact";
 import Wishlist from "./Components/Wishlist/Wishlist";
+import Checkout from "./Components/Checkout/Checkout";
+import CCinfo from "./Components/CCinfo/CCinfo";
+
 
 
 function App() {
@@ -28,7 +31,9 @@ function App() {
           <Route path='/product' element={<Product />}>
             <Route path=':productId' element={<Product />} />
           </Route>
+          <Route path="/ccinfo" element={<CCinfo />} />
           <Route path="/Wishlist" element={<Wishlist />} />
+          <Route path="/Checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignup/>} />
           <Route path="/Contact" element={<Contact/>} />
